@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt">
+    <head>
+        <meta charset="UTF-8">
+        <title>O Chat"o"</title>
+    </head>
+
+    <body>
+        <h1>O Chat"o"</h1>
+
+        <form action="/add-message" method="post">
+            <input name="username" placeholder="Introduz o nome">
+            <br>
+            <br>
+
+            <textarea placeholder="Escreve uma mensagem" name="text" rows="5"></textarea>
+            <br>
+
+            <button type="submit">Enviar</button>
+        </form>
+
+        <hr>
+
+        <h2>Mensagens "postadas"</h2>
+
+        {% for message in messages.items %}
+        <p>
+            <strong>{{ message.author }}:</strong>
+            {{message.text}}
+        </p>
+        {% endfor %}
+
+    <p>
+    {% for page_num in range(messages.pages) %}
+        <a href="/?page={{page_num+1}}">Página {{page_num+1}}</a> |
+    {% endfor %}
+</p>
+    </body>
+</html>
